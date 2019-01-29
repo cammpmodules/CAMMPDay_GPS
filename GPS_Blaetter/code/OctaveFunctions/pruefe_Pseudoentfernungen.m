@@ -1,8 +1,7 @@
-function pruefe_Pseudoentfernungen(dS)
+function pruefe_Pseudoentfernungen(dS, dS_MU)
 tolerance = 0.1;
-if max(abs(dS - [22717609.10   23165457.21   21000054.55])) > tolerance
+if max(abs(dS - dS_MU)) > tolerance
     printf('%s\n','Die berechneten Pseudoentfernungen sind nicht korrekt! Pruefe deine Berechnungsformel und die Ausbreitungsgeschwindigkeit!')
-    return
-end
+else
 display(dS)
 end
