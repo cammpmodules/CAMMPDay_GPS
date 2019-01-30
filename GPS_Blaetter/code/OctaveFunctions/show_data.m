@@ -1,13 +1,10 @@
-function [Satelliten,Satellitenauswahl,Wochen,tE,tS,Signalstaerken,Ephemeriden] = show_data(Satellitendaten)
+function [Satelliten,Satellitenauswahl,Wochen,tE,tS,Signalstaerken,Ephemeriden] = show_data(Satellitendaten, Satellitenauswahl)
     %   Auswaehlen eines Datensatzes
     Datensatznummer = 1;
     Datensatz = Satellitendaten(Datensatznummer);
 
     %   Satelliten, deren Nachrichten empfangen wurden
     Satelliten = Datensatz.Satelliten;
-
-    %   Auswaehlen der Satelliten
-    Satellitenauswahl = [1 2 3];
 
     %   Auslesen der ausgewaehlten Satellitendaten
     Wochen = Datensatz.Wochennummern(Satellitenauswahl);
