@@ -151,12 +151,7 @@ endfunction
 
 function [SP, delta_tE]=berechne_Empfaengerkoordinaten(SK,dS,StartP)
 % Aufstellen des Gleichungssystems
-liste = [];
-for i = 1:size(SK,2)
-    liste = [liste sqrt((xE-SK(1,i))^2+(yE-SK(2,i))^2+(zE-SK(3,i))^2)-(dS(i)-delta_dS)];
-end
-
-Gleichungssystem = @(xE,yE,zE,delta_dS) liste;
+Gleichungssystem = @(xE,yE,zE,Delta_dS) (sqrt((SK(1,:)-xE).^2+(SK(2,:)-yE).^2+(SK(3,:)-zE).^2)-(dS-Delta_dS));
         
 % Definiere Funktion und Startpunkt für fsolve 
 Funktion = @(X) Gleichungssystem(X(1),X(2),X(3),X(4));
@@ -166,7 +161,7 @@ StartP = [StartP; 0];
 
 % Berechnen einer Loesung in der Naehe des Startpunktes
 pkg load optim
-[X,fval,info,iterations] = lsqnonlin(Funktion,SP);
+[X,fval,info,iterations] = lsqnonlin(Funktion,StartP);
 
 SP = [X(1) X(2) X(3)];
 delta_tE = X(4)/299792458;

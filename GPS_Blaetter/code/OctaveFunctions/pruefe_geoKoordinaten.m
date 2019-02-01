@@ -1,13 +1,13 @@
 function pruefe_geoKoordinaten(h,phi,lambda,GK_MU)
 tolerance = 0.1;
 if max(abs([h phi lambda] - GK_MU)) > tolerance
-    if abs(h-(-18174)) > tolerance
+    if abs(h-GK_MU(1)) > tolerance
         printf('%s\n','Die berechnete Höhe ist nicht korrekt! Pruefe deine Berechnungsformel.')
     end
-    if abs(phi - 50.343) > tolerance
+    if abs(phi - GK_MU(2)) > tolerance
         printf('%s\n','Die berechnete Breite ist nicht korrekt! Pruefe deine Berechnungsformel.')
     end
-    if abs(lambda - 10.297) > tolerance
+    if abs(lambda - GK_MU(3)) > tolerance
         printf('%s\n','Die berechnete Länge ist nicht korrekt! Pruefe deine Berechnungsformel.')
     end
     return
