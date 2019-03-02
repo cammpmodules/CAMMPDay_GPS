@@ -1,0 +1,4 @@
+libpulse0
+libpulse-dev
+pulseaudio
+octave
